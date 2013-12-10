@@ -1,0 +1,14 @@
+#map-canvas{
+	margin: 0 auto;
+}
+.details{
+	font-size:11px;
+	
+}
+.label{
+	padding:.2em 7.6em .3em;
+	border-radius:1.25em;
+}
+.list-group-item-text{
+	font-size:11px;
+}
