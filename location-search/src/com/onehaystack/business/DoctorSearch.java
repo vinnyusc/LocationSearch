@@ -68,6 +68,10 @@ public class DoctorSearch extends HttpServlet {
 			doctor.category = practice;
 			doctor.name = query;
 			List<DoctorObject> doctorList = doctorResult.getDoctorInfo(doctor);
+			
+			
+			//TO DO
+			//Creating new array just to sort. Implement sort in DoctorObject
 			List<Result> result = new ArrayList<Result>(doctorList);
 			Collections.sort(result);
 			
