@@ -59,8 +59,15 @@ public class DoctorSearch extends HttpServlet {
 
 		if(request.getParameter("name")!=null){
 			String practice= request.getParameter("practice");
+			DoctorObject doctor = new DoctorObject();
 			DoctorResult doctorResult = new DoctorResult();
-			List<DoctorObject> doctorList = doctorResult.getCommonResult(zipCode, miles, query, srcLat, srcLng,practice);
+			doctor.zip = zipCode;
+			doctor.distance = Double.parseDouble(miles);
+			doctor.lat = Double.parseDouble(srcLat);
+			doctor.lng = Double.parseDouble(srcLng);
+			doctor.category = practice;
+			doctor.name = query;
+			List<DoctorObject> doctorList = doctorResult.getDoctorInfo(doctor);
 			List<Result> result = new ArrayList<Result>(doctorList);
 			Collections.sort(result);
 			

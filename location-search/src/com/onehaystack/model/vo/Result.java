@@ -8,7 +8,8 @@ public class Result implements Comparable<Result> {
 	public double lng;
 	public String phone = null;
 	public float rating;
-	public String category = null;
+	//public String category = null;
+	public String zip;
 
 	/*public boolean equals(Result r) {
 

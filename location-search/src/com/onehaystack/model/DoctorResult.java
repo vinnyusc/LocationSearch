@@ -12,15 +12,19 @@ import com.onehaystack.model.vo.Node;
 import com.onehaystack.model.vo.Result;
 import com.onehaystack.util.Process;
 
-public class DoctorResult  {
+public class DoctorResult implements DoctorInterface {
 
 	Process p = new Process();
 
-	public List<DoctorObject> getCommonResult(String zip, String miles, String name,
-			String lat, String lng,String practice) {
+	public List<DoctorObject> getDoctorInfo(DoctorObject doctor) {
 
 		
-		
+		String zip = doctor.zip;
+		//String miles = doctor.distance+"";
+		String name = doctor.name;
+		String practice = doctor.category;
+		String lat = doctor.lat+"";
+		String lng = doctor.lng+"";
 		Mysql db = new Mysql();
 		
 		ResultSet rs = db.getResultSet(zip,name,practice);

@@ -2,6 +2,7 @@ package com.onehaystack.model.vo;
 
 public class DoctorObject extends Result {
 	private String Id;
+	public String category = null;
 	public String getId() {
 		return Id;
 	}
