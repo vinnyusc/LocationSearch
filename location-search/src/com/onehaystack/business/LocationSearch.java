@@ -31,7 +31,7 @@ import com.onehaystack.util.Process;
 /**
  * Servlet implementation class LocationSearch
  */
-@WebServlet("/LocationSearch")
+@WebServlet("/search/locationsearch")
 public class LocationSearch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

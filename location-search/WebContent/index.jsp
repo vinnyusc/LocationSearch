@@ -342,7 +342,7 @@
       }
 
       function mapWithZip() {
-        var url = "<%=request.getContextPath()%>/LocationSearch?query=" + encodeURIComponent(qS).replace(/\%20/g, '%3d') + "&miles=" + miles + "&zip=" + encodeURIComponent(zip).replace(/\%20/g, '%3d');
+        var url = "<%=request.getContextPath()%>/search/locationsearch?query=" + encodeURIComponent(qS).replace(/\%20/g, '%3d') + "&miles=" + miles + "&zip=" + encodeURIComponent(zip).replace(/\%20/g, '%3d');
         url += "&lat="+gLat+"&lng="+gLng;
         //$("#debug").html("didNotGetPositions");
         //alert(url);
@@ -398,7 +398,7 @@
         realLat = gLat;
         realLng = gLng;
         zip = null;
-        url = "<%=request.getContextPath()%>/LocationSearch?query="
+        url = "<%=request.getContextPath()%>/search/locationsearch?query="
 					+ encodeURIComponent(qS).replace(/\%20/g, '%3d');
 			url += "&miles=" + miles;
 			url += "&zip=null";
