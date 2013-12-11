@@ -1,4 +1,4 @@
-package com.onehaystack.database;
+package com.onehaystack.db;
 
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Connection;
 
-public class Database {
+public class Mysql {
 	Connection conn;
 	public Connection getDatabaseConnection() {
 		Connection dbConnection = null;

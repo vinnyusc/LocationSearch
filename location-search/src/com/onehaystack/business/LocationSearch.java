@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.onehaystack.database.Database;
+import com.onehaystack.db.Mysql;
 import com.onehaystack.model.CommonResult;
 import com.onehaystack.model.DoctorResult;
 import com.onehaystack.model.GoogleResult;

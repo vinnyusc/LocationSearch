@@ -6,7 +6,7 @@ import java.text.DecimalFormat;
 import java.util.List;
 import java.util.ArrayList;
 
-import com.onehaystack.database.Database;
+import com.onehaystack.db.Mysql;
 import com.onehaystack.model.vo.DoctorObject;
 import com.onehaystack.model.vo.Node;
 import com.onehaystack.model.vo.Result;
@@ -21,7 +21,7 @@ public class DoctorResult  {
 
 		
 		
-		Database db = new Database();
+		Mysql db = new Mysql();
 		
 		ResultSet rs = db.getResultSet(zip,name,practice);
 
