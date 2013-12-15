@@ -1,0 +1,32 @@
+Uses google API's to get the location co ordinates based on the zip code or address.
+Searches the keyword and returns the JSON response to the client that includes all
+the details of the locations near the keyword.
+
+Classes used:
+1. LocationSearch.java
+2. GoogleResult.java
+3. Process.java
+4. GoogleObject.java
+
+API's Used:
+1. Google's nearby search API
+
+LocationSearch.java
+- Servlet that takes input GET parameters from the client side
+- Calls the getCommonResult() of GoogleResult using it's instance.
+- Sorts the returned Result object based on the distance from the source
+- Converts to JSON using Google's gson API and sends the result to the client.
+
+GoogleResult.java
+- Implements the CommonResult Interface and implements the method getCommonResult()
+- Constructs the URL based on the parameters obtained from the client side to for the
+Google's nearbysearch API.
+- Calls getJsonString() from the Process.java class to get the Google results as JSON
+- Converts the JSON to GoogleObject by calling getGoogleObject and returns a List of Result object
+
+Process.java
+- A utility class to compute the distance between the two lat-lng sources
+- Also gets the string out put given a url
+
+GoogleObject.java
+- An object defined to store Google response result
