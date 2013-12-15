@@ -7,6 +7,9 @@ Classes used:
 2. GoogleResult.java
 3. Process.java
 4. GoogleObject.java
+5. Result.java
+6. GeocodeOjbect.java
+
 
 API's Used:
 1. Google's nearby search API to get all the results based on keyword
@@ -32,3 +35,11 @@ Process.java
 
 GoogleObject.java
 - An object defined to store Google response result
+
+Result.java
+- An object that stores parameters to be sent tot he client.
+- Ultimately, the returned result to the client is a list of this object
+or a subclassed object packed as JSON.
+
+GeocodeObject.java
+- Object to store the results obtained from the google Geocode API.
