@@ -9,7 +9,9 @@ Classes used:
 4. GoogleObject.java
 
 API's Used:
-1. Google's nearby search API
+1. Google's nearby search API to get all the results based on keyword
+2. Google's location detail API to get Phone and Rating for a geo location
+3. Google's Geocode API to get the geo codes for an address or a zip code
 
 LocationSearch.java
 - Servlet that takes input GET parameters from the client side
