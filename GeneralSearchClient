@@ -1,0 +1,30 @@
+This page is used to search any location around any zip or address. 
+The user location should be enabled on pop up request to find the directions to the destination.
+
+Screens
+1. Search Screen
+2. Result Screen
+3. Direction Screen
+
+API Used:
+1. Google map api for Javascript to plot the geo coordinates on the map
+2. Google direction api to find the route to the destination
+
+Search Screen
+- Keyword(Mandatory): The user can enter any keyword to be searched. 
+- Miles(Optional): Defines the distance range to which the locations has to be present.
+- Nearby Address(Optional): Decides the location around which the keyword location should be searched.
+If not mentioned, the user's location coordinates will be considered.
+- Search Button: On click of the button, the results will be fetched an displayed
+
+Result Screen
+- Displays results as a list, ordered according to the increasing distance from the user.
+- Has ónclick listener's to the items in the list, that would show the direction screen on the click.
+- New Search Button: Clears the result screen and takes to Search Screen form.
+- Map displays the items on the map, with blue icon being the user's location.
+
+Direction Screen
+- Displays the direction from user location(A) to the clicked destination(B)
+- Displays the step by step direction and the distance
+- Has 4 categories of directions: Walking, Driving, Transit and Bicycling
+
