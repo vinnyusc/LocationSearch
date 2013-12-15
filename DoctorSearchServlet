@@ -1,0 +1,39 @@
+Uses Google's API and a database of doctors from http://nppes.viva-it.com/NPI_Files.html to display a list
+of doctors and their details based on the user location, zip code and doctor's category.
+
+Classes Used:
+1. DoctorSearch.java
+2. DoctorObject.java
+3. DoctorResult.java
+4. Mysql.java
+5. MysqlPopulate.java
+
+API's Used
+1. Google geocode API to fetch the geo coordinates of the doctor's address
+
+DoctorSearch.java
+- A servlet that gets the parameters fromt he client and bundles in to a DoctorOjbect.
+- This object is passed to the getDoctorInfo() method of the DoctorInterface interface.
+- Sorts the returned Result object based on the distance from the source
+- Converts to JSON using Google's gson API and sends the result to the client.
+
+DoctorObject.java
+- Extends Result.java object
+- An object to assign each result returned from the Database as object.
+
+DoctorResult.java
+- Implements the DoctorInterface to fetch the results to write to the client
+- Creates a database connection using Mysql.java
+- Gets the result set by calling getResultSet()
+- Iterates through the result set and builds a list of DoctorObjects
+- Fetches the geocordinates for each of the results using Google geocode API
+- Bundles into a list and returns the list
+
+Mysql.java
+- Based on the DoctorObject values, the query is prepared, fetched from the database.
+- A result set is returned
+
+MysqlPopulate.java
+- Populates the file obtained at http://nppes.viva-it.com/NPI_Files.html into the tables in the database
+
+
