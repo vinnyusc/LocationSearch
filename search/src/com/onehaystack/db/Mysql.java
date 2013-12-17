@@ -40,7 +40,7 @@ public class Mysql {
 	public PreparedStatement getPreparedStatement(String zip, String name, String practice) {
 		//name = null;
 		if(practice.toLowerCase().equals("all")){
-			practice = "^[P,N,O]";
+			practice = "^[A-Z]";
 		}
 		String columns = "NPI, category, Provider_First_Name, Provider_Last_Name_Legal_Name, Provider_First_Line_Business_Mailing_Address ,Provider_Business_Mailing_Address_City_Name,Provider_Business_Mailing_Address_State_Name ,Provider_Business_Mailing_Address_Postal_Code ,Provider_Business_Mailing_Address_Telephone_Number ";
 		String queryString = "";
@@ -58,12 +58,12 @@ public class Mysql {
 		String lNameColumn = "Provider_Last_Name_Legal_Name";
 		String practiceColumn = "";
 		if(!zip.equals("null") && !name.equals("null")){
-			queryString = "SELECT "+columns+" FROM mytable2"+" WHERE "+zipColumn+" like '"+zip+"%' AND ("+fNameColumn+" like '%"+name+"%' OR "+lNameColumn+" like '%"+name+"%') AND category REGEXP '"+practice+"' limit 30";
+			queryString = "SELECT "+columns+" FROM doctordata"+" WHERE "+zipColumn+" like '"+zip+"%' AND ("+fNameColumn+" like '%"+name+"%' OR "+lNameColumn+" like '%"+name+"%') AND category=(select abbr from categorymap where category REGEXP '"+practice+"') limit 30";
 		}else if(!zip.equals("null") && name.equals("null")){
-			queryString = "SELECT "+columns+" FROM mytable2"+" WHERE "+zipColumn+" like '"+zip+"%' AND ("+fNameColumn+" REGEXP '[A-Z]' OR "+lNameColumn+" REGEXP '[A-Z]') AND category REGEXP '"+practice+"' limit 30";
+			queryString = "SELECT "+columns+" FROM doctordata"+" WHERE "+zipColumn+" like '"+zip+"%' AND ("+fNameColumn+" REGEXP '[A-Z]' OR "+lNameColumn+" REGEXP '[A-Z]') AND category=(select abbr from categorymap where category REGEXP '"+practice+"') limit 30";
 
 		}else if(zip.equals("null") && !name.equals("null")){
-			queryString = "SELECT "+columns+" FROM mytable2"+" WHERE "+fNameColumn+" like '%"+name+"%' OR "+lNameColumn+" like '%"+name+"%' AND category REGEXP '"+practice+"' limit 30";
+			queryString = "SELECT "+columns+" FROM doctordata"+" WHERE "+fNameColumn+" like '%"+name+"%' OR "+lNameColumn+" like '%"+name+"%' AND category=(select abbr from categorymap where category REGEXP '"+practice+"') limit 30";
 
 		}
 		PreparedStatement pS = null;

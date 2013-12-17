@@ -72,9 +72,40 @@
                     
                     <select class="form-control" id="category">
                     <option>All</option>
-					  <option>Physician</option>
-					  <option>Oncologist</option>
-					  <option>Neurologist</option>
+					  <option>Ophthalmologist</option>
+						<option>Optometrist</option>
+						<option>Allergist</option>
+						<option>Anesthesiologist</option>
+						<option>Cardiologist</option>
+						<option>CriticalCare</option>
+						<option>Dermatologist</option>
+						<option>EarNoseThroat </option>
+						<option>EmergencyMedicine </option>
+						<option>Endocrinologist</option>
+						<option>Gastroenterologist</option>
+						<option>Geneticist</option>
+						<option>GeriatricMedicine </option>
+						<option>HospiceCarePalliative </option>
+						<option>InfectiousDisease </option>
+						<option>Nephrologist</option>
+						<option>Neurologist</option>
+						<option>NeuromusculoskeletalMedicine </option>
+						<option>NuclearMedicine </option>
+						<option>Oncologist</option>
+						<option>PainManagement</option>
+						<option>Pathologist</option>
+						<option>Podiatrist</option>
+						<option>PreventiveMedicine </option>
+						<option>Pulmonologist</option>
+						<option>Radiologist</option>
+						<option>SleepMedicine </option>
+						<option>Urologist</option>
+						<option>CardiothoracicSurgeon</option>
+						<option>ColorectalSurgeon</option>
+						<option>GeneralSurgeon</option>
+						<option>Neurosurgeon</option>
+						<option>OralSurgeon</option>
+						<option>Psychiatrist</option>
 					  
 					</select>
                     
@@ -119,6 +150,8 @@
         </table>
     </div>
 
+<div class="container" id="doctorResult"></div>
+    </div>
     <div class="container" id="searchResults"></div>
     </div>
 
@@ -158,6 +191,7 @@
         $('#newSearch').hide();
         $('#back').hide();
         $('#direction').hide();
+        $('#map-canvas').hide();
        /* navigator.geolocation.getCurrentPosition(function(position){
           gLat = position.coords.latitude;
           gLng = position.coords.longitude;
@@ -193,12 +227,40 @@
        // drawing map
 
 
+       $(function() {
+    	  $('#doctorResult').on('click','a', function(){
+    		 $('#doctorResult').hide();
+    		 $('#newSearch').hide();
+             $('#back').show();
+             var results = servletdata.results;
+             var val = $(this).attr('data-id');
+             i = val;
+             var div = $('<div class="list-group">');
+             var str = "<a href='#' class='list-group-item' data-id='" + val + "' id='item'>";
+             var a = $(str).appendTo(div);
+             var list = $('<h4 class="list-group-item-heading">').html(
+                      + ': ' + results[i].name).appendTo(a);
+             //var ul = $('<ul class = "list-group">').appendTo(list);
+             //var span = $('<span class="details">').appendTo(ul);
+             var li = $('<p class = "list-group-item-text">').html(
+                     results[i].address + '</br>' + results[i].phone
+                             
+                             + '</br> Category: ' + results[i].category + '</br>'
+                             + '<i>'
+                             + results[i].distance + ' miles </i>')
+                     .appendTo(list);
+             //$(result).appendTo(div);
+             $('#searchResults').show();
+             $('#searchResults').html(div);
+             
+    	  }); 
+       });
       $(function() {
         $('#searchResults').on('click', 'a', function() {
           $('#searchResults').hide();
           $('#newSearch').hide();
           $('#back').show();
-         
+         $('#map-canvas').show();
           //$('.everything').hide();
           //$('.map').show();
           var val = $(this).attr('data-id');
@@ -321,6 +383,7 @@
           $('#newSearch').slideUp();
           $('#searchForm').show(1000);
           $('#searchResults').hide(1000);
+          $('#doctorResult').hide(1000);
 
         });
 
@@ -329,11 +392,14 @@
           console.log(previousMapResults);
           console.log(previousMarker);
           drawPoints(servletdata,servletdata.sourceLat,servletdata.sourceLng);
-          $('#searchResults').show(500);
+          $('#doctorResult').show(500);
           $(this).hide(function(){
             $('#newSearch').show(500);
             $('#direction').slideUp(500);
           });
+          
+          //---
+          $('#map-canvas').hide();
           
         });
       });
@@ -393,12 +459,13 @@
               servletdata = json;
             getTable(json);
             //$('#tableID').html(table);
-            $('#map-canvas').show(1000, function() {
+            //---$('#map-canvas').show(1000, function() {
               
               $('#newSearch').slideDown(1000);
-              $('#searchResults').slideDown(1000);
+              $('#doctorResult').slideDown(1000);
               drawPoints(json, null, null);
-            });
+            //---});
+            
             $('#searchForm').hide(1000);
           },
           error: function(jq,status,message) {
@@ -462,12 +529,12 @@
                             //alert(table);
                             //$('#tableID').html(table);  
                             //getGeoLocation();  
-                            $('#map-canvas').show(1000, function() {
+                            //---$('#map-canvas').show(1000, function() {
 
                                 $('#newSearch').slideDown(1000);
-                                $('#searchResults').slideDown(1000);
+                                $('#doctorResult').slideDown(1000);
                                 drawPoints(json, realLat, realLng);
-                            });
+                            //---});
                             $('#searchForm').hide(1000);
                         },
                         error : function(jq, status, message) {
@@ -539,7 +606,7 @@
                 //$(result).appendTo(div);
             }
 
-            $('#searchResults').html(div);
+            $('#doctorResult').html(div);
 
             //var table = "";
             //table+="<thead><tr><th>Name</th><th>Address</th><th>Distance</th></tr></thead>";

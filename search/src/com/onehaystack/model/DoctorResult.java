@@ -25,6 +25,7 @@ public class DoctorResult implements DoctorInterface {
 		String practice = doctor.category;
 		String lat = doctor.lat+"";
 		String lng = doctor.lng+"";
+		
 		Mysql db = new Mysql();
 		
 		ResultSet rs = db.getResultSet(zip,name,practice);
