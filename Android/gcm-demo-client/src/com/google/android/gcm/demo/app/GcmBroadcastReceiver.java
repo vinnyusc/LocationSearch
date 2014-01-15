@@ -1,0 +1,16 @@
+package com.google.android.gcm.demo.app;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
+
+public class GcmBroadcastReceiver extends BroadcastReceiver{
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        Log.d("GCM","Somethign received");
+        
+    }
+
+}
